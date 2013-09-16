@@ -1,0 +1,58 @@
+﻿@model JDTMVC.Models.Job
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Job</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Job</legend>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.name)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.name)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Static_Testing)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Static_Testing)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Dynamic_Testing)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Dynamic_Testing)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.PM)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.PM)
+        </div>
+    
+        <div class="display-label">
+             @Html.DisplayNameFor(model => model.Engineer)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Engineer)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
