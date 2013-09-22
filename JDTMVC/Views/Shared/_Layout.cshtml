@@ -4,13 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css", "~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <link href=”http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/overcast/jquery-ui.css” type=”text/css” rel=”Stylesheet” class=”ui-theme” />
+    
 </head>
 <body>
+    
     @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
+ 
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

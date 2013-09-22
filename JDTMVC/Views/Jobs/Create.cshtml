@@ -1,7 +1,7 @@
 ﻿@model JDTMVC.Models.Job
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,19 +10,26 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#etcdate").datepicker({ dateFormat: "dd-M-y" });
+            });
+</script>
+
 </head>
 <body>
-    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    
+  
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
     
         <fieldset>
-            <legend>Job</legend>
-    
+            <p>
+            <legend>Create Job</legend>
+            </p>
+
+
             <div class="editor-label">
                 @Html.LabelFor(model => model.name)
             </div>
@@ -31,19 +38,19 @@
                 @Html.ValidationMessageFor(model => model.name)
             </div>
     
-            <div class="editor-label">
+           @* <div class="editor-label">
                 @Html.LabelFor(model => model.Static_Testing)
-            </div>
+            </div>*@
             <div class="editor-field">
-                @Html.EditorFor(model => model.Static_Testing)
+                @Html.LabelFor(model => model.Static_Testing) : @Html.EditorFor(model => model.Static_Testing)
                 @Html.ValidationMessageFor(model => model.Static_Testing)
             </div>
     
-            <div class="editor-label">
+            @*<div class="editor-label">
                 @Html.LabelFor(model => model.Dynamic_Testing)
-            </div>
+            </div>*@
             <div class="editor-field">
-                @Html.EditorFor(model => model.Dynamic_Testing)
+                @Html.LabelFor(model => model.Dynamic_Testing) : @Html.EditorFor(model => model.Dynamic_Testing)
                 @Html.ValidationMessageFor(model => model.Dynamic_Testing)
             </div>
     
@@ -62,14 +69,22 @@
                 @Html.DropDownListFor(model => model.Engineer, (SelectList)ViewBag.EngineerList)
                 @Html.ValidationMessageFor(model => model.Engineer)
             </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PO_Date)
+            </div>
+            <div class ="editor-field">
+                @Html.TextBoxFor(model => model.PO_Date , new { @id = "etcdate" })
+                @Html.ValidationMessageFor(model => model.PO_Date)
+            </div>
     
             <p>
                 <input type="submit" value="Create" />
             </p>
+
         </fieldset>
     }
-    
-    <div>
+
+      <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
 </body>

@@ -26,6 +26,10 @@ namespace JDTMVC.Models
         [Display(Name="Project Manager")]
         public string PM { get; set; }
 
+        //[DisplayFormat(NullDisplayText="", DataFormatString="{0:R}")]
+        [Display(Name = "PO Date")]
+        public DateTime PO_Date { get; set; }
+
         public string Engineer { get; set; }
 
     }

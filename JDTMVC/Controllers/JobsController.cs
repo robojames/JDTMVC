@@ -10,8 +10,8 @@ namespace JDTMVC.Controllers
 {
     public class JobsController : Controller
     {
-        string[] PM_List = new string[2] { "John Murray", "Vinay Shaw" };
-        string[] Engineer_List = new string[2] { "Eric Poole", "Wills Houghland" };
+        string[] PM_List = new string[3] { "", "John Murray", "Vinay Shaw" };
+        string[] Engineer_List = new string[3] { "", "Eric Poole", "Wills Houghland" };
 
         // Main entry point for the user
         public ActionResult Index()
