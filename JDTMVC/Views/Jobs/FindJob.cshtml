@@ -1,58 +1,40 @@
 ﻿@model JDTMVC.Models.Job
 
 @{
+    ViewBag.Title = "View Job";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Job</title>
-</head>
-<body>
     <fieldset>
-        <legend>Job</legend>
-    
+        <legend>Viewing: Job @Model.name</legend>
+    <p></p>
         <div class="display-label">
-             @Html.DisplayNameFor(model => model.name)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.name)
+             <b>@Html.DisplayNameFor(model => model.name)</b>: @Html.DisplayFor(model => model.name)
         </div>
     
         <div class="display-label">
-             @Html.DisplayNameFor(model => model.Static_Testing)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Static_Testing)
+             <b>@Html.DisplayNameFor(model => model.Static_Testing)</b>: @Html.DisplayFor(model => model.Static_Testing)
         </div>
     
         <div class="display-label">
-             @Html.DisplayNameFor(model => model.Dynamic_Testing)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Dynamic_Testing)
+             <b>@Html.DisplayNameFor(model => model.Dynamic_Testing)</b>: @Html.DisplayFor(model => model.Dynamic_Testing)
         </div>
     
         <div class="display-label">
-             @Html.DisplayNameFor(model => model.PM)
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.PM)
+            <b>@Html.DisplayNameFor(model => model.PM)</b>: @Html.DisplayFor(model => model.PM)
         </div>
     
         <div class="display-label">
-             @Html.DisplayNameFor(model => model.Engineer)
+             <b>@Html.DisplayNameFor(model => model.Engineer)</b>: @Html.DisplayFor(model => model.Engineer)
         </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.Engineer)
+        <div class="display-label">
+             <b>@Html.DisplayNameFor(model => model.Status)</b>: @Html.DisplayFor(model => model.Status)
         </div>
     </fieldset>
+<div class="submenu">
     <p>
         @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
-</body>
-</html>
+</div>

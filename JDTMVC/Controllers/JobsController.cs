@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using JDTMVC.Models;
 using System.Diagnostics;
+using System.Data.Entity.Validation;
 
 namespace JDTMVC.Controllers
 {
@@ -12,6 +13,9 @@ namespace JDTMVC.Controllers
     {
         string[] PM_List = new string[3] { "", "John Murray", "Vinay Shaw" };
         string[] Engineer_List = new string[3] { "", "Eric Poole", "Wills Houghland" };
+        string[] Status_List = new string[5] { "", "Running", "On Hold", "MFG", "Done" };
+
+        
 
         // Main entry point for the user
         public ActionResult Index()
@@ -37,11 +41,7 @@ namespace JDTMVC.Controllers
         public ActionResult FindJob(string name)
         {
 
-            ViewData["PMLIST"] = new SelectList(PM_List);
-            ViewData["ENGINEERLIST"] = new SelectList(Engineer_List);
-
             var db = new JobsDataContext();
-
 
             var job = (Models.Job)db.Jobs.Where(t => t.name == name).FirstOrDefault();
 
@@ -61,7 +61,7 @@ namespace JDTMVC.Controllers
         public ActionResult Edit(long id)
         {
             ViewBag.PMList = new SelectList(PM_List);
-            
+            ViewBag.StatusList = new SelectList(Status_List);
             ViewBag.EngineerList = new SelectList(Engineer_List);
 
             var db = new JobsDataContext();
@@ -95,6 +95,7 @@ namespace JDTMVC.Controllers
 
             ViewData["PMLIST"] = new SelectList(PM_List);
             ViewData["ENGINEERLIST"] = new SelectList(Engineer_List);
+            ViewData["StatusList"] = new SelectList(Status_List);
 
             return View();
         }
@@ -106,8 +107,17 @@ namespace JDTMVC.Controllers
             {
                 // Save to the database
                 var db = new JobsDataContext();
+
                 db.Jobs.Add(newjob);
-                db.SaveChanges();
+
+                if (db.GetValidationErrors().Count() > 0)
+                {
+                    return RedirectToAction("Create");
+                }
+                else
+                {
+                    db.SaveChanges();
+                }
 
                 return RedirectToAction("Index");
             }
@@ -115,5 +125,7 @@ namespace JDTMVC.Controllers
             return Create();
                         
         }
+
+     
     }
 }

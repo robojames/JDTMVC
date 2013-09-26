@@ -6,15 +6,40 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/themes/base/css", "~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Content/Site.css")
 
     <link href=”http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/overcast/jquery-ui.css” type=”text/css” rel=”Stylesheet” class=”ui-theme” />
-    
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#etcdate").datepicker();
+            });
+</script>
 </head>
 <body>
     
+<br>
+<div class="headerbar">
+<img src="~/Content/Empirical Testing Corp-cropped.png" width="300px">
+</div>
+
+<div class="JDTMenu">
+<ul>
+<li> @Html.ActionLink("Home", "Index", "Jobs") | </li>
+<li> @Html.ActionLink("Track", "Create", "Jobs") | </li>
+<li> @Html.ActionLink("Status", "Create", "Jobs") </li>
+</ul>
+</div>
+
+<div class="maincontent">
+
     @RenderBody()
 
- 
+</div>
+
+<div class="footer">
+Job Date Tracker - Version 0.1B - <a href="mailto:JArmes@empiricaltesting.com">James Armes</a>
+</div>
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryui")
 

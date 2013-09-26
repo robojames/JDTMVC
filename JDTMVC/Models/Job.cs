@@ -11,7 +11,8 @@ namespace JDTMVC.Models
         
         public long Id { get; set; }
 
-        [Required]
+        
+        [Required(ErrorMessage="Please enter a job number")]
         [Display(Name = "Job Number")]
         [StringLength(160, MinimumLength = 5)]
         public string name { get; set; }
@@ -22,13 +23,19 @@ namespace JDTMVC.Models
         [Display(Name = "Dynamic Testing")]
         public bool Dynamic_Testing { get; set; }
         
-        [Required]
+        [Required(ErrorMessage="Please select a PM")]
         [Display(Name="Project Manager")]
         public string PM { get; set; }
-
-        //[DisplayFormat(NullDisplayText="", DataFormatString="{0:R}")]
+                
+        [DisplayFormat(ApplyFormatInEditMode=true, DataFormatString = "{0:dd-MMM-yy}")]
         [Display(Name = "PO Date")]
+        [DataType(DataType.Date)]
         public DateTime PO_Date { get; set; }
+
+        [Display(Name = "Job Status")]
+        [Required(ErrorMessage="Please enter the current status of the job")]
+        public string Status { get; set; }
+        
 
         public string Engineer { get; set; }
 

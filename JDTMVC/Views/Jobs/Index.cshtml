@@ -1,26 +1,22 @@
 ﻿@model JDTMVC.Models.Job[]
 
 @{
-    Layout = null;
-}
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div>
+   <div style="text-align:center">
     @using (Html.BeginForm("FindJob", "Jobs", FormMethod.Get))
     {
         @Html.TextBox("name")
         <input type ="submit" value="Search" />
     }
+       <p>
             @Html.DropDownList("TableSelect")
+       </p>
+       <p>
             @Html.ActionLink("Create Job", "Create")
-            
-    </div>
-</body>
-</html>
+       </p>
+            </div>
+    
+

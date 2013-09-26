@@ -1,24 +1,11 @@
 ﻿@model JDTMVC.Models.Job
 
 @{
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript">
-            $(function () {
-                $("#etcdate").datepicker({ dateFormat: "dd-M-y" });
-            });
-</script>
-
-</head>
-<body>
   
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
@@ -28,7 +15,6 @@
             <p>
             <legend>Create Job</legend>
             </p>
-
 
             <div class="editor-label">
                 @Html.LabelFor(model => model.name)
@@ -73,10 +59,16 @@
                 @Html.LabelFor(model => model.PO_Date)
             </div>
             <div class ="editor-field">
-                @Html.TextBoxFor(model => model.PO_Date , new { @id = "etcdate" })
+                @Html.TextBoxFor(model => model.PO_Date ,"{0:dd-MMM-yy}", new { @id = "etcdate" })
                 @Html.ValidationMessageFor(model => model.PO_Date)
             </div>
-    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Status)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.Status, (SelectList)ViewBag.StatusList)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
             <p>
                 <input type="submit" value="Create" />
             </p>
@@ -84,8 +76,6 @@
         </fieldset>
     }
 
-      <div>
+      <div class="submenu">
         @Html.ActionLink("Back to List", "Index")
     </div>
-</body>
-</html>
