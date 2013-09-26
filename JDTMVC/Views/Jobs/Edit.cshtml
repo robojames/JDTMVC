@@ -72,12 +72,13 @@
         <p>
             <input type="submit" value="Save" />
         </p>
+        <div class="submenu">
+    @Html.ActionLink("Back to List", "Index")
+</div>
     </fieldset>
 }
 
-<div class="submenu">
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
