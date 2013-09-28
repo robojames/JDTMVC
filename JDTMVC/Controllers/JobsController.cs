@@ -21,9 +21,10 @@ namespace JDTMVC.Controllers
         public ActionResult Index()
         {
             var db = new JobsDataContext();
+
             var jobs = db.Jobs.ToArray();
 
-
+            
                 var model = jobs.Select(t => new SelectListItem
                 {
                     Text = t.name.ToString(),
@@ -38,6 +39,7 @@ namespace JDTMVC.Controllers
 
         }
 
+        // Finds job based on passed in name (Job number)
         public ActionResult FindJob(string name)
         {
 
@@ -100,6 +102,9 @@ namespace JDTMVC.Controllers
             return View();
         }
 
+        // 
+        // Creates a brand new job to the DB
+        //
         [HttpPost]
         public ActionResult Create(Models.Job newjob)
         {
@@ -107,6 +112,8 @@ namespace JDTMVC.Controllers
             {
                 // Save to the database
                 var db = new JobsDataContext();
+
+                newjob.curr_Revision = "A";
 
                 db.Jobs.Add(newjob);
 
@@ -126,6 +133,26 @@ namespace JDTMVC.Controllers
                         
         }
 
+        public ActionResult AddRevision(Models.Job job)
+        {
+            if (ModelState.IsValid)
+            {
+                var db = new JobsDataContext();
+
+                char current_Revision = char.Parse(job.curr_Revision);
+
+                current_Revision++;
+
+                job.curr_Revision = current_Revision.ToString();
+
+                Debug.WriteLine("Current Revision: " + job.curr_Revision);
+
+                db.Jobs.Add(job);
+
+                db.SaveChanges();
+            }
+                return RedirectToAction("Index");
+        }
      
     }
 }

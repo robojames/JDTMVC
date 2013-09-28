@@ -16,10 +16,10 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.name)
+            @Html.LabelFor(model => model.name) 
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.name)
+            @Html.EditorFor(model => model.name) Rev. @Model.curr_Revision
             @Html.ValidationMessageFor(model => model.name)
         </div>
 
@@ -73,7 +73,7 @@
             <input type="submit" value="Save" />
         </p>
         <div class="submenu">
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Add Revision", "AddRevision", Model)
 </div>
     </fieldset>
 }

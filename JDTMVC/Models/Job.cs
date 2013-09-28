@@ -27,17 +27,18 @@ namespace JDTMVC.Models
         [Display(Name="Project Manager")]
         public string PM { get; set; }
                 
-        [DisplayFormat(ApplyFormatInEditMode=true, DataFormatString = "{0:dd-MMM-yy}")]
         [Display(Name = "PO Date")]
         [DataType(DataType.Date)]
-        public DateTime PO_Date { get; set; }
+        public DateTime? PO_Date { get; set; }
 
         [Display(Name = "Job Status")]
         [Required(ErrorMessage="Please enter the current status of the job")]
         public string Status { get; set; }
         
-
         public string Engineer { get; set; }
+
+        [Display(Name="Rev.")]
+        public string curr_Revision { get; set; }
 
     }
 }
