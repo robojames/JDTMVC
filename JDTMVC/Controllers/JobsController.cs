@@ -42,26 +42,49 @@ namespace JDTMVC.Controllers
         // Finds job based on passed in name (Job number)
         public ActionResult FindJob(string name)
         {
-
             var db = new JobsDataContext();
 
-            var job = (Models.Job)db.Jobs.Where(t => t.name == name).FirstOrDefault();
-
-            if (job == null)
+            if (name != "")
             {
-                Index();
+                var job = (IEnumerable<Models.Job>)db.Jobs.Where(t => t.name == name);
 
-                return View("Index");
+                if (job == null)
+                {
+                    Index();
+
+                    return View("Index");
+                }
+                else
+                {
+                    return View(job);
+                }
             }
             else
             {
-                return View(job);
+                var job = (IEnumerable<Models.Job>)db.Jobs;
+                
+                if (job == null)
+                {
+                    Index();
+
+                    return View("Index");
+                }
+                else
+                {
+                    return View(job);
+                }
             }
+
+            
         }
 
         [HttpGet]
         public ActionResult Edit(long id)
         {
+            ViewData["PMLIST"] = new SelectList(PM_List);
+            ViewData["ENGINEERLIST"] = new SelectList(Engineer_List);
+            ViewData["StatusList"] = new SelectList(Status_List);
+
             ViewBag.PMList = new SelectList(PM_List);
             ViewBag.StatusList = new SelectList(Status_List);
             ViewBag.EngineerList = new SelectList(Engineer_List);
@@ -152,6 +175,17 @@ namespace JDTMVC.Controllers
                 db.SaveChanges();
             }
                 return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(Models.Job job)
+        {
+            var db = new JobsDataContext();
+
+            db.Entry(job).State = System.Data.EntityState.Deleted;
+
+            db.SaveChanges();
+
+            return View("Index");
         }
      
     }

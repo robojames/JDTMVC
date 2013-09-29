@@ -1,40 +1,56 @@
-﻿@model JDTMVC.Models.Job
+﻿@model IEnumerable<JDTMVC.Models.Job>
 
 @{
-    ViewBag.Title = "View Job";
+    ViewBag.Title = "Find Job";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Find Jobs</h2>
 
-    <fieldset>
-        <legend>Viewing: Job @Model.name</legend>
-    <p></p>
-        <div class="display-label">
-             <b>@Html.DisplayNameFor(model => model.name)</b>: @Html.DisplayFor(model => model.name)
-        </div>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+@if (Model.Count() > 0)
+{
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.curr_Revision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+              
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curr_Revision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id}, new {data_confirmprompt = "Are you sure you want to delete job " + item.name + "?"})
+        </td>
+    </tr>
+}
+
     
-        <div class="display-label">
-             <b>@Html.DisplayNameFor(model => model.Static_Testing)</b>: @Html.DisplayFor(model => model.Static_Testing)
-        </div>
-    
-        <div class="display-label">
-             <b>@Html.DisplayNameFor(model => model.Dynamic_Testing)</b>: @Html.DisplayFor(model => model.Dynamic_Testing)
-        </div>
-    
-        <div class="display-label">
-            <b>@Html.DisplayNameFor(model => model.PM)</b>: @Html.DisplayFor(model => model.PM)
-        </div>
-    
-        <div class="display-label">
-             <b>@Html.DisplayNameFor(model => model.Engineer)</b>: @Html.DisplayFor(model => model.Engineer)
-        </div>
-        <div class="display-label">
-             <b>@Html.DisplayNameFor(model => model.Status)</b>: @Html.DisplayFor(model => model.Status)
-        </div>
-    </fieldset>
-<div class="submenu">
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</div>
+</table>
+}
+else
+{
+ @: No jobs found.  Please try again.   
+}

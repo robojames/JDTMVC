@@ -11,11 +11,11 @@
         @Html.TextBox("name")
         <input type ="submit" value="Search" />
     }
-       <p>
+       @*<p>
             @Html.DropDownList("TableSelect")
-       </p>
+       </p>*@
        <p>
-            @Html.ActionLink("Create Job", "Create")
+            @Html.ActionLink("Create Job", "Create") | <a href="~/Jobs/FindJob?name=">View All</a>
        </p>
             </div>
     

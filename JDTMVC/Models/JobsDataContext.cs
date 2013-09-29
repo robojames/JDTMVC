@@ -25,7 +25,7 @@ namespace JDTMVC.Models
             {
                 Job job = entityEntry.Entity as Job;
 
-                if (Jobs.Where(x => x.name == job.name).Count() > 0 && Jobs.Where(x => x.curr_Revision == job.curr_Revision).Count() > 0)
+                if (Jobs.Where(x => x.name == job.name && x.curr_Revision==job.curr_Revision).Count() > 0)
                 {
                     result.ValidationErrors.Add(new DbValidationError("name", "Job number and revision must be unique."));
                     Debug.WriteLine("Error thrown:  Jobs need to be unique");
