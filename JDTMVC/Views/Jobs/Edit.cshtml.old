@@ -1,0 +1,86 @@
+﻿@model JDTMVC.Models.Job
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Edit: Job @Model.name</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.curr_Revision)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name) 
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name) Rev. @Model.curr_Revision
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Static_Testing)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Static_Testing)
+            @Html.ValidationMessageFor(model => model.Static_Testing)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Dynamic_Testing)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Dynamic_Testing)
+            @Html.ValidationMessageFor(model => model.Dynamic_Testing)
+        </div>
+
+        <div class="editor-label">
+                @Html.LabelFor(model => model.PM)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.PM, (SelectList)ViewBag.PMList)
+                @Html.ValidationMessageFor(model => model.PM)
+            </div>
+
+       <div class="editor-label">
+                @Html.LabelFor(model => model.Engineer)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.Engineer, (SelectList)ViewBag.EngineerList)
+                @Html.ValidationMessageFor(model => model.Engineer)
+            </div>
+
+        <div class="editor-label">
+                @Html.LabelFor(model => model.PO_Date)
+            </div>
+            <div class ="editor-field">
+                @Html.TextBoxFor(model => model.PO_Date ,"{0:MM/dd/yy}", new { @id = "etcdate" })
+                @Html.ValidationMessageFor(model => model.PO_Date)
+            </div>
+        <div class="editor-label">
+                @Html.LabelFor(model => model.Status)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.Status, (SelectList)ViewBag.StatusList)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+        <div class="submenu">
+    @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Add Revision", "AddRevision", Model) | @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { data_confirmprompt = "Are you sure you want to delete job " + Model.name + "?" })
+</div>
+    </fieldset>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

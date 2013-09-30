@@ -234,8 +234,8 @@
     <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\Jobs\Create.cshtml" />
     <Content Include="Views\Jobs\FindJob.cshtml" />
-    <None Include="Views\Jobs\FindJob.cshtml.old" />
     <Content Include="Views\Jobs\Edit.cshtml" />
+    <None Include="Views\Jobs\Edit.cshtml.old" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

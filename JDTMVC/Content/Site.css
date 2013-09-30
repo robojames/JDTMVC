@@ -111,7 +111,7 @@ background-image: linear-gradient(to bottom, #FAB582 0%, #FFFFFF 100%);
 .maincontent {
 	margin-top: 215px;
 	font-family:Garamond;
-	text-align: left;
+
 	color: #000000;
 	width:100%;
 
@@ -124,6 +124,7 @@ background-image: linear-gradient(to bottom, #FAB582 0%, #FFFFFF 100%);
 	display:block;
 	margin:auto; 
 }
+
 .JDTMenu {
 	font-family:Garamond;
 	position:fixed;
@@ -178,3 +179,12 @@ background-image: linear-gradient(to bottom, #FAB582 0%, #FFFFFF 100%);
 	color:#f57b20;
 }
 
+.CenteredContent
+{
+    text-align:center;
+}
+
+    .CenteredContent tr, th, td
+    {
+        padding: 1px 5px 1px 5px;
+    }

@@ -12,7 +12,7 @@ namespace JDTMVC.Controllers
     public class JobsController : Controller
     {
         string[] PM_List = new string[3] { "", "John Murray", "Vinay Shaw" };
-        string[] Engineer_List = new string[3] { "", "Eric Poole", "Wills Houghland" };
+        string[] Engineer_List = new string[5] { "", "Eric Poole", "Wills Houghland", "James Armes", "Ed Ogodrony" };
         string[] Status_List = new string[5] { "", "Running", "On Hold", "MFG", "Done" };
 
         
