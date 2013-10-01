@@ -13,8 +13,62 @@ namespace JDTMVC.Controllers
     {
         string[] PM_List = new string[3] { "", "John Murray", "Vinay Shaw" };
         string[] Engineer_List = new string[5] { "", "Eric Poole", "Wills Houghland", "James Armes", "Ed Ogodrony" };
-        string[] Status_List = new string[5] { "", "Running", "On Hold", "MFG", "Done" };
+        string[] Status_List = new string[12] { "", "Cancelled", "Closed", "Done", "Hold", "MFG", "Pre-Test", "Quarantine", "Receive", "Running", "Science Fair", "Wait Queue" };
+        string[] DeviceTypes = new string[] {
+            "", 
+            "ACP System", 
+            "ALP System", 
+            "Ankle Implant", 
+            "Bone Screw", 
+            "Clavicle", 
+            "Coating", 
+            "Connector", 
+            "Dental Implant", 
+            "Drill", 
+            "Elbow Implant", 
+            "ESFD", 
+            "Foot Implant", 
+            "Hip Implant", 
+            "Hook", 
+            "IBFD Cervical", 
+            "IBFD Lumbar", 
+            "IM Device", 
+            "Instruments",
+            "ISP Lumbar",
+            "ISS Lumbar",
+            "Knee Implant",
+            "Lumbar SA",
+            "OCT System",
+            "PDS System",
+            "Plate - Bone",
+            "Plate - Laminoplasty",
+            "PLIF",
+            "Protocol Only",
+            "Prototyping",
+            "PSS Cervical",
+            "PSS Component",
+            "PSS Lumbar",
+            "Regulatory",
+            "Rods",
+            "RSP",
+            "SA Cervicle",
+            "SA Lumbar",
+            "Screw - Facet",
+            "Screw - Non-Facet",
+            "Shoulder Implant",
+            "Staple",
+            "Sterilization",
+            "TDR Cervical",
+            "TDR Lumbar",
+            "Test Blocks Only",
+            "Thumb Implant",
+            "Tibial Tray",
+            "Toe",
+            "VBR",
+            "Wrist Implant" 
+       };
 
+        string[] ReportTypes = new string[3] { "", "Report", "Memo" };
         
 
         // Main entry point for the user
@@ -81,13 +135,15 @@ namespace JDTMVC.Controllers
         [HttpGet]
         public ActionResult Edit(long id)
         {
-            ViewData["PMLIST"] = new SelectList(PM_List);
-            ViewData["ENGINEERLIST"] = new SelectList(Engineer_List);
-            ViewData["StatusList"] = new SelectList(Status_List);
+            //ViewData["PMLIST"] = new SelectList(PM_List);
+            //ViewData["ENGINEERLIST"] = new SelectList(Engineer_List);
+            //ViewData["StatusList"] = new SelectList(Status_List);
 
             ViewBag.PMList = new SelectList(PM_List);
             ViewBag.StatusList = new SelectList(Status_List);
             ViewBag.EngineerList = new SelectList(Engineer_List);
+            ViewBag.DeviceList = new SelectList(DeviceTypes);
+            ViewBag.ReportList = new SelectList(ReportTypes);
 
             var db = new JobsDataContext();
             

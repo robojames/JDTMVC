@@ -26,6 +26,9 @@ namespace JDTMVC.Models
         [Required(ErrorMessage="Please select a PM")]
         [Display(Name="Project Manager")]
         public string PM { get; set; }
+
+        [Display(Name="Report or Memo")]
+        public string Report_Or_Memo { get; set; }
         
         // Dates for the Job Model
         [Display(Name = "PO Date")]

@@ -10,161 +10,106 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Edit Job @Model.name</legend>
+        <legend>Job @Model.name Rev. @Model.curr_Revision</legend>
 
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.curr_Revision)
         @Html.HiddenFor(model => model.name)
 
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Static_Testing)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Static_Testing)
-            @Html.ValidationMessageFor(model => model.Static_Testing)
-        </div>
+        <div class="tableLayout">
+        <table>
+            <tr>
+                <td> @Html.LabelFor(model => model.Status) </td>
+                <td> @Html.DropDownListFor(model => model.Status, (SelectList)ViewBag.StatusList) </td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Dynamic_Testing)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Dynamic_Testing)
-            @Html.ValidationMessageFor(model => model.Dynamic_Testing)
-        </div>
+                <td class="secondColumn"> Customer Contact: </td>
+                <td> SELECT </td>
+            </tr>
+            <tr>
+                <td>  @Html.LabelFor(model => model.DeliveryDate) </td>
+                <td> @Html.TextBoxFor(model => model.DeliveryDate ,"{0:MM/dd/yy}", new { @class = "etcdate" }) </td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PM)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.PM, (SelectList)ViewBag.PMList)
-            @Html.ValidationMessageFor(model => model.PM)
-        </div>
+                <td class="secondColumn"> Customer Name: </td>
+                <td> SELECT </td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model => model.Report_Or_Memo) </td>
+                <td> @Html.DropDownListFor(model => model.Report_Or_Memo, (SelectList)ViewBag.ReportList) </td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PO_Date)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.PO_Date ,"{0:MM/dd/yy}", new { @class = "etcdate" })
-            @Html.ValidationMessageFor(model => model.PO_Date)
-        </div>
+                <td class="secondColumn"> @Html.LabelFor(model => model.SystemName)</td>
+                <td> @Html.EditorFor(model=> model.SystemName)</td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model => model.Static_Testing)</td>
+                <td> @Html.EditorFor(model => model.Static_Testing)</td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DeliveryDate)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.DeliveryDate ,"{0:MM/dd/yy}", new { @class = "etcdate" })
-            @Html.ValidationMessageFor(model => model.DeliveryDate)
-        </div>
+                <td class="secondColumn"> @Html.LabelFor(model => model.DeviceType)</td>
+                <td> @Html.DropDownListFor(model => model.DeviceType, (SelectList)ViewBag.DeviceList)</td>
+                
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model => model.Dynamic_Testing)</td>
+                <td> @Html.EditorFor(model => model.Dynamic_Testing)</td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FolderBuild)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.FolderBuild ,"{0:MM/dd/yy}", new { @class = "etcdate" })
-            @Html.ValidationMessageFor(model => model.FolderBuild)
-        </div>
+                <td class="secondColumn"> @Html.LabelFor(model => model.PM)</td>
+                <td> @Html.DropDownListFor(model => model.PM, (SelectList)ViewBag.PMList)</td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model=>model.PO_Date)</td>
+                <td> @Html.TextBoxFor(model => model.PO_Date, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.FolderCheck)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.FolderCheck ,"{0:MM/dd/yy}", new { @class = "etcdate" })
-            @Html.ValidationMessageFor(model => model.FolderCheck)
-        </div>
+                <td class="secondColumn"> @Html.LabelFor(model => model.Engineer)</td>
+                <td> @Html.DropDownListFor(model => model.Engineer, (SelectList)ViewBag.EngineerList)</td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model=>model.FolderBuild)</td>
+                <td> @Html.TextBoxFor(model => model.FolderBuild, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TestStart)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.TestStart ,"{0:MM/dd/yy}", new { @class = "etcdate" })
-            @Html.ValidationMessageFor(model => model.TestStart)
-        </div>
+                <td class="secondColumn"> @Html.LabelFor(model => model.ReportWritten)</td>
+                <td> @Html.TextBoxFor(model => model.ReportWritten, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model=>model.FolderCheck)</td>
+                <td> @Html.TextBoxFor(model => model.FolderCheck, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TestEnd)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.TestEnd ,"{0:MM/dd/yy}", new { @class = "etcdate" })
-            @Html.ValidationMessageFor(model => model.TestEnd)
-        </div>
+                <td class="secondColumn"> @Html.LabelFor(model => model.Report_Initial_Check)</td>
+                <td> @Html.TextBoxFor(model => model.Report_Initial_Check, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model=>model.TestStart)</td>
+                <td> @Html.TextBoxFor(model => model.TestStart, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ReportWritten)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.ReportWritten ,"{0:MM/dd/yy}", new { @class = "etcdate" })
-            @Html.ValidationMessageFor(model => model.ReportWritten)
-        </div>
+                <td class="secondColumn"> @Html.LabelFor(model => model.Report_Final_Check)</td>
+                <td> @Html.TextBoxFor(model => model.Report_Final_Check, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model=>model.TestEnd)</td>
+                <td> @Html.TextBoxFor(model => model.TestEnd, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Report_Initial_Check)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Report_Initial_Check ,"{0:MM/dd/yy}", new { @class = "etcdate" })
-            @Html.ValidationMessageFor(model => model.Report_Initial_Check)
-        </div>
+                <td class="secondColumn"> @Html.LabelFor(model => model.Invoiced)</td>
+                <td> @Html.TextBoxFor(model => model.Invoiced, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Report_Final_Check)
+                <td class="secondColumn"> @Html.LabelFor(model => model.Comments)</td>
+                <td> @Html.EditorFor(model => model.Comments)</td>
+            </tr>
+        </table>
         </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Report_Final_Check ,"{0:MM/dd/yy}", new { @class = "etcdate" })
-            @Html.ValidationMessageFor(model => model.Report_Final_Check)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Invoiced)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Invoiced ,"{0:MM/dd/yy}", new { @class = "etcdate" })
-            @Html.ValidationMessageFor(model => model.Invoiced)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.SystemName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.SystemName)
-            @Html.ValidationMessageFor(model => model.SystemName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Comments)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Comments)
-            @Html.ValidationMessageFor(model => model.Comments)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Status)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.Status, (SelectList)ViewBag.StatusList)
-            @Html.ValidationMessageFor(model => model.Status)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Engineer)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownListFor(model => model.Engineer, (SelectList)ViewBag.EngineerList)
-            @Html.ValidationMessageFor(model => model.Engineer)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        
+       
+            
+        
         <div class="submenu">
-    @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Add Revision", "AddRevision", Model) | @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { data_confirmprompt = "Are you sure you want to delete job " + Model.name + "?" })
+            <input type="submit" value="Save" class="myButton" />
+    @Html.ActionLink("Add Revision", "AddRevision", Model) | @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { data_confirmprompt = "Are you sure you want to delete job " + Model.name + "?" })
 </div>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

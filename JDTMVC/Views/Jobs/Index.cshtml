@@ -10,13 +10,13 @@
     @using (Html.BeginForm("FindJob", "Jobs", FormMethod.Get))
     {
         @Html.TextBox("name")
-        <input type ="submit" value="Search" />
+        <input type ="submit" value="Search" class="myButton" style="width:75px;" />
     }
        @*<p>
             @Html.DropDownList("TableSelect")
        </p>*@
        <p>
-            @Html.ActionLink("Create Job", "Create") | <a href="~/Jobs/FindJob?name=">View All</a>
+            @Html.ActionLink("Create Job", "Create", null, new {@class = "myButton"}) | <a href="~/Jobs/FindJob?name=" class="myButton">View All</a>
        </p>
             </div>
     
