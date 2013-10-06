@@ -11,6 +11,7 @@ namespace JDTMVC.Models
     public class JobsDataContext : DbContext
     {
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         static JobsDataContext()
         {

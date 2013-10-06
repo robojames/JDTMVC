@@ -1,0 +1,37 @@
+﻿@model JDTMVC.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Customer</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.first_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.first_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.last_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.last_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Company_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Company_Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

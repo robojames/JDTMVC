@@ -90,5 +90,11 @@ namespace JDTMVC.Models
         [Display(Name="Rev.")]
         public string curr_Revision { get; set; }
 
+        [Display(Name="Customer Name")]
+        public string customer_Name { get; set; }
+
+        [Display(Name="Customer Company")]
+        public string customer_Company { get; set; }
+
     }
 }

@@ -129,10 +129,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomersDataContext.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\JobsDataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -235,6 +238,12 @@
     <Content Include="Views\Jobs\Create.cshtml" />
     <Content Include="Views\Jobs\FindJob.cshtml" />
     <Content Include="Views\Jobs\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Jobs\DueDate.cshtml" />
     <None Include="Views\Jobs\Edit.cshtml.old" />
   </ItemGroup>
   <ItemGroup>

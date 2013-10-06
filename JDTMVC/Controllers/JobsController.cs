@@ -145,6 +145,25 @@ namespace JDTMVC.Controllers
             ViewBag.DeviceList = new SelectList(DeviceTypes);
             ViewBag.ReportList = new SelectList(ReportTypes);
 
+            var db_Customer = new CustomersDataContext();
+
+            var customers = (IEnumerable<Models.Customer>)db_Customer.Customers;
+
+            List<string> customer_List = new List<string>();
+            List<string> customer_Companies = new List<string>();
+
+            customer_List.Add("");
+            customer_Companies.Add("");
+
+            foreach (Customer customer in customers)
+            {
+                customer_List.Add(customer.first_Name + " " + customer.last_Name);
+                customer_Companies.Add(customer.Company_Name.ToString());
+            }
+
+            ViewBag.CustomerList = new SelectList(customer_List);
+            ViewBag.CompanyList = new SelectList(customer_Companies);
+
             var db = new JobsDataContext();
             
             var job = db.Jobs.Find(id);
@@ -242,6 +261,15 @@ namespace JDTMVC.Controllers
             db.SaveChanges();
 
             return View("Index");
+        }
+
+        public ActionResult DueDate()
+        {
+            var db = new JobsDataContext();
+
+            var done_jobs = (IEnumerable<Job>)db.Jobs.Where(job => job.Status == "Done").OrderByDescending(job => job.Engineer);
+
+            return View(done_jobs);
         }
      
     }

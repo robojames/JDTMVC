@@ -10,12 +10,17 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
+        
+
         <legend>Job @Model.name Rev. @Model.curr_Revision</legend>
 
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.curr_Revision)
         @Html.HiddenFor(model => model.name)
 
+        <div class ="ErrorMessageDiv">
+            <!-- Need to put in the full error message listings here -->
+        </div>
 
         <div class="tableLayout">
         <table>
@@ -23,15 +28,15 @@
                 <td> @Html.LabelFor(model => model.Status) </td>
                 <td> @Html.DropDownListFor(model => model.Status, (SelectList)ViewBag.StatusList) </td>
 
-                <td class="secondColumn"> Customer Contact: </td>
-                <td> SELECT </td>
+                <td class="secondColumn"> @Html.LabelFor(model => model.customer_Company) </td>
+                <td> @Html.DropDownListFor(model => model.customer_Company, (SelectList)ViewBag.CompanyList) </td>
             </tr>
             <tr>
                 <td>  @Html.LabelFor(model => model.DeliveryDate) </td>
                 <td> @Html.TextBoxFor(model => model.DeliveryDate ,"{0:MM/dd/yy}", new { @class = "etcdate" }) </td>
 
-                <td class="secondColumn"> Customer Name: </td>
-                <td> SELECT </td>
+                <td class="secondColumn"> @Html.LabelFor(model => model.customer_Name) </td>
+                <td> @Html.DropDownListFor(model => model.customer_Name, (SelectList)ViewBag.CustomerList) </td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.Report_Or_Memo) </td>
@@ -100,9 +105,7 @@
         </table>
         </div>
         
-       
-            
-        
+              
         <div class="submenu">
             <input type="submit" value="Save" class="myButton" />
     @Html.ActionLink("Add Revision", "AddRevision", Model) | @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { data_confirmprompt = "Are you sure you want to delete job " + Model.name + "?" })
