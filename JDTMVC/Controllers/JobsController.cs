@@ -7,6 +7,7 @@ using JDTMVC.Models;
 using System.Diagnostics;
 using System.Data.Entity.Validation;
 
+
 namespace JDTMVC.Controllers
 {
     public class JobsController : Controller
@@ -270,6 +271,29 @@ namespace JDTMVC.Controllers
             var done_jobs = (IEnumerable<Job>)db.Jobs.Where(job => job.Status == "Done").OrderByDescending(job => job.Engineer);
 
             return View(done_jobs);
+        }
+
+        public ActionResult JobDistro()
+        {
+            var db = new JobsDataContext();
+
+            var JobCount = new List<int>();
+
+            var Engineers = Engineer_List.Skip(1);
+
+            foreach (string Engineer in Engineer_List.Skip(1))
+            {
+                var jobsbyEng = db.Jobs.Where(job => job.Engineer == Engineer).Count();
+
+                JobCount.Add(jobsbyEng);
+            }
+
+            ViewBag.JobCounts = JobCount;
+            ViewBag.Engineers = Engineers;
+
+            ViewData["Engineers"] = Engineers.ToArray();
+            
+            return View();
         }
      
     }

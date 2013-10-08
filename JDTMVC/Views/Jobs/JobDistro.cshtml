@@ -1,0 +1,59 @@
+﻿@model JDTMVC.Models.Job
+
+
+@{
+    ViewBag.Title = "JobDistro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="align-self:center;">Job Distribution</h2>
+
+@{
+    var engineers = (string[])ViewData["Engineers"];
+}
+
+<div class="CenteredContent">
+
+<div class="engineerzero">
+    @engineers[0] - @ViewBag.JobCounts[0]
+</div>
+<div class="engineerone">
+    @engineers[1] - @ViewBag.JobCounts[1]
+</div>
+<div class="engineertwo">
+    @engineers[2] - @ViewBag.JobCounts[2]
+</div>
+<div class="engineerthree">
+    @engineers[3] - @ViewBag.JobCounts[3]
+</div>
+
+<canvas id="canvas" height="250" width="250" class="CenteredContent"></canvas>
+
+    </div>
+
+
+	<script>
+
+		var pieData = [
+				{
+					value: @ViewBag.JobCounts[0],
+					color:"#F38630"
+				},
+				{
+				    value: @ViewBag.JobCounts[1],
+				    color : "#666666"
+				},
+				{
+				    value: @ViewBag.JobCounts[2],
+					color : "#69D2E7"
+				},
+                {
+                    value: @ViewBag.JobCounts[3],
+                    color: "#624De4"
+                }
+			
+			];
+
+	var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+	
+	</script>

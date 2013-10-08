@@ -10,6 +10,7 @@
 
     <link href=”http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/overcast/jquery-ui.css” type=”text/css” rel=”Stylesheet” class=”ui-theme” />
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="~/Scripts/Chart.js"></script>
         <script type="text/javascript">
             $(function () {
                 $(".etcdate").datepicker();
@@ -39,7 +40,8 @@
 <ul>
 <li> @Html.ActionLink("Home", "Index", "Jobs") | </li>
 <li> @Html.ActionLink("Due Date Summary", "DueDate", "Jobs") | </li>
-<li> @Html.ActionLink("Customer Management", "Index", "Customers") </li>
+<li> @Html.ActionLink("Customer Management", "Index", "Customers") |</li>
+<li> @Html.ActionLink("Job Distribution", "JobDistro", "Jobs") </li>
 </ul>
 </div>
 

@@ -206,6 +206,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -245,6 +246,7 @@
     <Content Include="Views\Customers\Delete.cshtml" />
     <Content Include="Views\Jobs\DueDate.cshtml" />
     <None Include="Views\Jobs\Edit.cshtml.old" />
+    <Content Include="Views\Jobs\JobDistro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
