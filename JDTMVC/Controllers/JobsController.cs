@@ -15,6 +15,15 @@ namespace JDTMVC.Controllers
         string[] PM_List = new string[3] { "", "John Murray", "Vinay Shaw" };
         string[] Engineer_List = new string[5] { "", "Eric Poole", "Wills Houghland", "James Armes", "Ed Ogodrony" };
         string[] Status_List = new string[12] { "", "Cancelled", "Closed", "Done", "Hold", "MFG", "Pre-Test", "Quarantine", "Receive", "Running", "Science Fair", "Wait Queue" };
+        string[] Caliper_List = new string[1] { "" };
+        string[] Micrometer_List = new string[1] { "" };
+        string[] Scale_List = new string[1] { "" };
+        string[] TW_List = new string[1] { "" };
+        string[] Protractor_List = new string[1] { "" };
+        string[] LVF_List = new string[1] { "" };
+        string[] LVT_List = new string[1] { "" };
+
+
         string[] DeviceTypes = new string[] {
             "", 
             "ACP System", 

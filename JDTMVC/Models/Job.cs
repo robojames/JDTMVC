@@ -96,5 +96,43 @@ namespace JDTMVC.Models
         [Display(Name="Customer Company")]
         public string customer_Company { get; set; }
 
+        public string Calipers { get; set; }
+
+        [Display(Name="Caliper Date")]
+        public DateTime? Caliper_Date { get; set; }
+
+        public string Micrometer { get; set; }
+
+        [Display(Name = "Micrometer Date")]
+        public DateTime? Micrometer_Date { get; set; }
+
+        public string Scale { get; set; }
+
+        [Display(Name = "Scale Date")]
+        public DateTime? Scale_Date { get; set; }
+
+        [Display(Name="Torque Wrench")]
+        public string Torque_Wrench { get; set; }
+
+        [Display(Name = "Torque Wrench Date")]
+        public DateTime? Torque_Wrench_Date { get; set; }
+
+        public string Protractor { get; set; }
+
+        [Display(Name = "Protractor Date")]
+        public DateTime? Protractor_Date { get; set; }
+
+        [Display(Name="Load Verify (force):")]
+        public string LV_Force { get; set; }
+
+        [Display(Name = "Load Verify Date")]
+        public DateTime? LV_Force_Date { get; set; }
+
+        [Display(Name="Load Verify (torque):")]
+        public string LV_Torque { get; set; }
+
+        [Display(Name = "Load Verify Date")]
+        public DateTime? LV_Torque_Date { get; set; } 
+
     }
 }
