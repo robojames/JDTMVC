@@ -20,8 +20,8 @@
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.curr_Revision)
         @Html.HiddenFor(model => model.name)
-
-        <div id="accordion" style="padding-bottom:15px;">
+        <div style="overflow:visible;">
+        <div id="accordion">
         <h3> Job Details</h3>
         <div class="tableLayout">
         <table>
@@ -107,53 +107,53 @@
         </div>
          
             <h3>Equipment Details</h3>
-            <div style="height:225px; padding-bottom:20px;">
-                <table style="padding-bottom:20px;">
+            <div style="height:225px;">
+                <table>
                     <tr>
                         <td> @Html.LabelFor(model => model.Calipers)</td>
-                        <td> @Html.EditorFor(model => model.Calipers)</td>
+                        <td> @Html.DropDownListFor(model => model.Calipers, (SelectList)ViewBag.CaliperList)</td>
 
                         <td class="secondColumn"> @Html.LabelFor(model => model.Caliper_Date)</td>
                         <td> @Html.TextBoxFor(model => model.Caliper_Date, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
                     </tr>
                     <tr>
                         <td> @Html.LabelFor(model => model.Micrometer)</td>
-                        <td> @Html.EditorFor(model=>model.Micrometer)</td>
+                        <td> @Html.DropDownListFor(model=>model.Micrometer, (SelectList)ViewBag.MicrometerList)</td>
 
                         <td class="secondColumn"> @Html.LabelFor(model => model.Micrometer_Date)</td>
                         <td> @Html.TextBoxFor(model => model.Micrometer_Date, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
                     </tr>
                     <tr>
                         <td> @Html.LabelFor(model => model.Scale)</td>
-                        <td> @Html.EditorFor(model=>model.Scale)</td>
+                        <td> @Html.DropDownListFor(model=>model.Scale, (SelectList)ViewBag.ScaleList)</td>
 
                         <td class="secondColumn"> @Html.LabelFor(model => model.Scale_Date)</td>
                         <td> @Html.TextBoxFor(model => model.Scale_Date, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
                     </tr>
                     <tr>
                         <td> @Html.LabelFor(model => model.Torque_Wrench)</td>
-                        <td> @Html.EditorFor(model => model.Torque_Wrench)</td>
+                        <td> @Html.DropDownListFor(model => model.Torque_Wrench, (SelectList)ViewBag.TWList)</td>
 
                         <td class="secondColumn"> @Html.LabelFor(model => model.Torque_Wrench_Date)</td>
                         <td> @Html.TextBoxFor(model => model.Torque_Wrench_Date, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
                     </tr>
                     <tr>
                         <td> @Html.LabelFor(model => model.Protractor)</td>
-                        <td> @Html.EditorFor(model => model.Protractor)</td>
+                        <td> @Html.DropDownListFor(model => model.Protractor, (SelectList)ViewBag.ProtractorList)</td>
 
                         <td class="secondColumn"> @Html.LabelFor(model => model.Protractor_Date)</td>
                         <td> @Html.TextBoxFor(model => model.Protractor_Date, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
                     </tr>
                     <tr>
                         <td> @Html.LabelFor(model => model.LV_Force)</td>
-                        <td> @Html.EditorFor(model => model.LV_Force)</td>
+                        <td> @Html.DropDownListFor(model => model.LV_Force, (SelectList)ViewBag.LVForceList)</td>
 
                         <td class="secondColumn"> @Html.LabelFor(model => model.LV_Force_Date)</td>
                         <td> @Html.TextBoxFor(model => model.LV_Force_Date, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
                     </tr>
                     <tr>
                         <td> @Html.LabelFor(model => model.LV_Torque)</td>
-                        <td> @Html.EditorFor(model => model.LV_Torque)</td>
+                        <td> @Html.DropDownListFor(model => model.LV_Torque, (SelectList)ViewBag.LVTorqueList)</td>
 
                         <td class="secondColumn"> @Html.LabelFor(model => model.LV_Torque_Date)</td>
                         <td> @Html.TextBoxFor(model => model.LV_Torque_Date, "{0:MM/dd/yy}", new { @class = "etcdate" })</td>
@@ -161,7 +161,7 @@
                 </table>
             </div>
         </div>
-        
+        </div>
         
               
         <div class="submenu">

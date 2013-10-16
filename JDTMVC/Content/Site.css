@@ -143,6 +143,7 @@ body
 {
     display: block;
     margin: auto;
+    z-index:20;
 }
 
 .JDTMenu
@@ -156,6 +157,7 @@ body
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
+    z-index:20;
 }
 
     .JDTMenu ul
@@ -271,6 +273,7 @@ body
 .tableLayout td
 {
     padding-top:5px;
+    padding-bottom:5px;
 }
 
 .ErrorMessageDiv
@@ -306,3 +309,20 @@ body
 {
     color:#624De4;
 }
+
+.DueDateSummary {
+    width: auto; 
+    height:auto; 
+    margin: 0 auto;
+    border-collapse:collapse;
+}
+
+    .DueDateSummary th {
+        border: 1px solid black;
+        padding:5px;
+    }
+
+    .DueDateSummary td {
+       border: 1px solid black;  
+       padding:5px;      
+    }

@@ -12,17 +12,30 @@ namespace JDTMVC.Controllers
 {
     public class JobsController : Controller
     {
+        #region List Constants for Equipment and Personnel
         string[] PM_List = new string[3] { "", "John Murray", "Vinay Shaw" };
-        string[] Engineer_List = new string[5] { "", "Eric Poole", "Wills Houghland", "James Armes", "Ed Ogodrony" };
+        
+        string[] Engineer_List = new string[6] { "", "Eric Poole", "Wills Houghland", "James Armes", "Ed Ogodrony", "Bill Nye" };
+        
         string[] Status_List = new string[12] { "", "Cancelled", "Closed", "Done", "Hold", "MFG", "Pre-Test", "Quarantine", "Receive", "Running", "Science Fair", "Wait Queue" };
-        string[] Caliper_List = new string[1] { "" };
-        string[] Micrometer_List = new string[1] { "" };
-        string[] Scale_List = new string[1] { "" };
-        string[] TW_List = new string[1] { "" };
-        string[] Protractor_List = new string[1] { "" };
-        string[] LVF_List = new string[1] { "" };
-        string[] LVT_List = new string[1] { "" };
+        
+        string[] Caliper_List = new string[25] { "", "CP002", "CP002, CP003, CP006, CP008", "CP002, CP004", "CP002, CP003", "CP002, CP005", "CP002, CP006", "CP002, CP008",
+        "CP003", "CP003, CP005", "CP003, CP004", "CP003, CP004, CP005, CP008", "CP003, CPOO4, CPOO8", "CP003, CP006", "CP003, CP008", "CP004", "CP004, CP005",
+        "CP005", "CP005, CP006", "CP005, CP008", "CP005, CP002", "CP005, CP003", "CP006", "CP006, CP008", "CP008"};
 
+        string[] Micrometer_List = new string[3] { "", "DM001", "F125E" };
+        
+        string[] Scale_List = new string[19] { "", "DB001", "DB001, DB002", "DB001/SC07", "DB002", "DB002/DB001", "SC01", "SC02", "SC02, DB001", "SC02, DB001, DB002", "SC03", "SC04", "SC05", "SC06", "SC06, SC10",
+        "SC07", "SC07, SC10", "SC08", "SC09"};
+        
+        string[] TW_List = new string[19] { "", "TW002", "TW003", "TW003, TW004", "TW003, TW005", "TW003, TW007", "TW004", "TW004, TW002", "TW004, TW005", "TW004, TW006", "TW005, TW007", "TW006", "TW006, TW003",
+        "TW006, TW007", "TW006, TW009", "TW007", "TW008", "TW008, TW009", "TW009"};
+        
+        string[] Protractor_List = new string[2] { "", "DP001" };
+        
+        string[] LVF_List = new string[6] { "", "Deadweights (Tension)", "FG001", "FG001, FG002", "FG002", "Shunt Ref" };
+        
+        string[] LVT_List = new string[6] { "", "Shunt Ref", "TW002", "TW004", "TW005", "TW007" };
 
         string[] DeviceTypes = new string[] {
             "", 
@@ -79,7 +92,8 @@ namespace JDTMVC.Controllers
        };
 
         string[] ReportTypes = new string[3] { "", "Report", "Memo" };
-        
+
+        #endregion
 
         // Main entry point for the user
         public ActionResult Index()
@@ -142,6 +156,7 @@ namespace JDTMVC.Controllers
             
         }
 
+        // Action to redirect to the edit page per job id (this is linked to the PK in the DB, NOT the job number)
         [HttpGet]
         public ActionResult Edit(long id)
         {
@@ -154,6 +169,15 @@ namespace JDTMVC.Controllers
             ViewBag.EngineerList = new SelectList(Engineer_List);
             ViewBag.DeviceList = new SelectList(DeviceTypes);
             ViewBag.ReportList = new SelectList(ReportTypes);
+
+            ViewBag.CaliperList = new SelectList(Caliper_List);
+            ViewBag.MicrometerList = new SelectList(Micrometer_List);
+            ViewBag.ScaleList = new SelectList(Scale_List);
+            ViewBag.TWList = new SelectList(TW_List);
+            ViewBag.ProtractorList = new SelectList(Protractor_List);
+            ViewBag.LVForceList = new SelectList(LVF_List);
+            ViewBag.LVTorqueList = new SelectList(LVT_List);
+
 
             var db_Customer = new CustomersDataContext();
 
@@ -181,6 +205,7 @@ namespace JDTMVC.Controllers
             return View(job);
         }
 
+        // Action to post edited values to the database, job passed in as object
         [HttpPost]
         public ActionResult Edit(Models.Job editedjob)
         {
@@ -199,6 +224,7 @@ namespace JDTMVC.Controllers
             }
         }
 
+        // Redirects to the create page for a new job
         [HttpGet]
         public ActionResult Create()
         {
@@ -210,9 +236,8 @@ namespace JDTMVC.Controllers
             return View();
         }
 
-        // 
-        // Creates a brand new job to the DB
-        //
+        
+        // Creates a brand new job in the DB
         [HttpPost]
         public ActionResult Create(Models.Job newjob)
         {
@@ -221,10 +246,12 @@ namespace JDTMVC.Controllers
                 // Save to the database
                 var db = new JobsDataContext();
 
+                // Sets the current revision to A, as it should be for any new job created
                 newjob.curr_Revision = "A";
 
                 db.Jobs.Add(newjob);
 
+                // Checks to see if there are any validation errors returned by the JobsDataContext comparitor
                 if (db.GetValidationErrors().Count() > 0)
                 {
                     return RedirectToAction("Create");
@@ -253,8 +280,9 @@ namespace JDTMVC.Controllers
 
                 job.curr_Revision = current_Revision.ToString();
 
-                Debug.WriteLine("Current Revision: " + job.curr_Revision);
-
+                #if DEBUG
+                    Debug.WriteLine("Current Revision: " + job.curr_Revision);
+                #endif
                 db.Jobs.Add(job);
 
                 db.SaveChanges();
@@ -262,6 +290,7 @@ namespace JDTMVC.Controllers
                 return RedirectToAction("Index");
         }
 
+        // Need to create a view for this...currently the only prompt is given by jQuery.
         public ActionResult Delete(Models.Job job)
         {
             var db = new JobsDataContext();
@@ -273,6 +302,7 @@ namespace JDTMVC.Controllers
             return View("Index");
         }
 
+        // Grabs data and returns view for the due date summary
         public ActionResult DueDate()
         {
             var db = new JobsDataContext();

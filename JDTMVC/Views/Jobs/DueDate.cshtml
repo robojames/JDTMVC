@@ -10,7 +10,7 @@
     <h2>Due Date Summary</h2>
 
 
-    <table style="width: auto; height:auto; margin: 0 auto; border: 1px solid black;">
+    <table class="DueDateSummary">
 
         <tr class="CenteredContent">
             <th>
@@ -40,7 +40,7 @@
                 @Html.DisplayNameFor(model => model.Comments)
             </th>
 
-            <th></th>
+            <th>Options</th>
         </tr>
 
         @foreach (var item in Model)
@@ -71,7 +71,7 @@
                         <div class="greenbox">&nbsp</div>
                     }
                 </td>
-                <td>
+                <td> @* Need to update this to fill the entire td with the red or green coloring *@
                     @if (item.Report_Final_Check == null)
                     {
                         <div class="redbox">&nbsp</div>
@@ -81,13 +81,12 @@
                         <div class="greenbox">&nbsp</div>
                     }
                 </td>
-                <td>
+                <td style="width:200px;">
                     @Html.DisplayFor(modelItem => item.Comments)
                 </td>
 
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("View Details", "Edit", new { id = item.Id })
                 </td>
             </tr>
      
